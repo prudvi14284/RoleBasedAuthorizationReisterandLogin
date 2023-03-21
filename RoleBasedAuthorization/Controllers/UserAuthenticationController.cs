@@ -28,9 +28,10 @@ namespace RoleBasedAuthorization.Controllers
                 return View(model);
             }
             model.Role = "user";
-            var result = await _service.RegistrationAsync(model);
+            var result = await _service.RegistrationModel(model);
             TempData["msg"] = result.Message;
             return RedirectToAction(nameof(Registration));
+
         }
 
         public IActionResult Login()
@@ -64,5 +65,7 @@ namespace RoleBasedAuthorization.Controllers
         {
             await _service.LogoutAsync();
         }
+
+
     }
 }
