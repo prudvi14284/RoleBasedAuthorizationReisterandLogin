@@ -39,16 +39,14 @@ namespace RoleBasedAuthorization.Controllers
             return View();
         }
 
-        // Login post
+        //Login Post
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
             var result = await _service.LoginAsync(model);
-            if(result.StatusCode == 1)
+            if (result.StatusCode == 1)
             {
                 return RedirectToAction("Display", "Dashboard");
             }
@@ -59,26 +57,28 @@ namespace RoleBasedAuthorization.Controllers
             }
         }
 
-        
+
+
         [Authorize]
-        public async Task Logout()
+        public async Task<IActionResult> Logout()
         {
             await _service.LogoutAsync();
+            return RedirectToAction(nameof(Login));
         }
 
-        //public async Task<IActionResult> Reg()
-        //{
-        //    var model = new RegistrationModel()
-        //    {
-        //        UserName = "admin",
-        //        Name = "Prudvi",
-        //        Email = "prudvi@gmail.com",
-        //        Password = "Admin@12345"
-        //    };
-        //    model.Role = "user";
-        //    var result = await _service.RegistrationModel(model);
-        //    return Ok(result);
-        //}
+        public async Task<IActionResult> Reg()
+        {
+            var model = new RegistrationModel()
+            {
+                UserName = "admin",
+                Name = "Prudvi Raj",
+                Email = "prudvi@gmail.com",
+                Password = "Admin@12345"
+            };
+            model.Role = "admin";
+            var result = await _service.RegistrationModel(model);
+            return Ok(result);
+        }
 
     }
 }
