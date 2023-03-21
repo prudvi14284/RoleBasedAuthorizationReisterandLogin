@@ -66,6 +66,19 @@ namespace RoleBasedAuthorization.Controllers
             await _service.LogoutAsync();
         }
 
+        //public async Task<IActionResult> Reg()
+        //{
+        //    var model = new RegistrationModel()
+        //    {
+        //        UserName = "admin",
+        //        Name = "Prudvi",
+        //        Email = "prudvi@gmail.com",
+        //        Password = "Admin@12345"
+        //    };
+        //    model.Role = "user";
+        //    var result = await _service.RegistrationModel(model);
+        //    return Ok(result);
+        //}
 
     }
 }
