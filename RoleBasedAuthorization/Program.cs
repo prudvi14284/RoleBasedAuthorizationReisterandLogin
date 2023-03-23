@@ -14,10 +14,12 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(
 
 //For Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<DatabaseContext>()
-    .AddDefaultTokenProviders();
+        .AddEntityFrameworkStores<DatabaseContext>()
+        .AddDefaultTokenProviders();
+
 builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
 
+//add services to container
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 
 var app = builder.Build();

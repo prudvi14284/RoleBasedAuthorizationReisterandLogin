@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>login</title>
+	<title>Login</title>
         
 <style>
 form {
@@ -54,17 +54,17 @@ button {
   <div class="container">
     <label asp-for="UserName"><b>UserName</b></label>
     <input type="text" asp-for="UserName" placeholder="Enter Username">
-            <div class="msg">
-            <span class="err" asp-validation-for="UserName"></span>
-            </div>
+    <div class="msg">
+        <span class="err" asp-validation-for="UserName"></span>
+    </div>
 
             
 
     <label asp-for="Password"><b>Password</b></label>
-   <input  type="password" asp-for="Password" placeholder="Enter Password">
-            <div class="msg">
-            <span asp-validation-for="Password" class="err"></span>
-            </div>
+    <input  type="password" asp-for="Password" placeholder="Enter Password">
+    <div class="msg">
+        <span asp-validation-for="Password" class="err"></span>
+    </div>
 
 
     @if(TempData["msg"]!=null){
